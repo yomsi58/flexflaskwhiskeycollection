@@ -8,7 +8,7 @@ api = Blueprint('api',__name__, url_prefix='/api')
 def getdata():
     return {'jim': 'beam'}
 
-@api.route('/Whiskys', methods = ['POST'])
+@api.route('/Whisky', methods = ['POST'])
 @token_required
 def create_Whisky(current_user_token):
     brand = request.json['brand']
@@ -27,7 +27,7 @@ def create_Whisky(current_user_token):
     response = Whisky_schema.dump(contact)
     return jsonify(response)
 
-@api.route('/Whiskys', methods = ['GET'])
+@api.route('/Whisky', methods = ['GET'])
 @token_required
 def get_contact(current_user_token):
     a_user = current_user_token.token
@@ -35,7 +35,7 @@ def get_contact(current_user_token):
     response = Whiskys_schema.dump(Whiskys)
     return jsonify(response)
 
-@api.route('/Whiskys/<id>', methods = ['GET'])
+@api.route('/Whisky/<id>', methods = ['GET'])
 @token_required
 def get_Whisky_two(Whisky_user_token, id):
     fan = Whisky_user_token.token
@@ -60,7 +60,7 @@ def update_Whisky(current_user_token,id):
     response = Whisky_schema.dump(Whisky)
     return jsonify(response)
 
-@api.route('/Whiskys/<id>', methods = ['DELETE'])
+@api.route('/Whisky/<id>', methods = ['DELETE'])
 @token_required
 def delete_Whisky(current_user_token, id):
     Whisky = Whisky.query.get(id)
